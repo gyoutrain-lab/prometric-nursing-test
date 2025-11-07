@@ -1,0 +1,20 @@
+{
+  "name": "Nursing Prometric Test",
+  "short_name": "Prometric",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#004aad",
+  "theme_color": "#004aad",
+  "icons": [
+    {
+      "src": "https://github.com/gyoutrain-lab/prometric-nursing-test/blob/main/icon17%20(1).jpg?raw=true",
+      "sizes": "192x192",
+      "type": "image/jpg"
+    },
+    {
+      "src": "https://github.com/gyoutrain-lab/prometric-nursing-test/blob/main/icon17%20(1).jpg?raw=true",
+      "sizes": "512x512",
+      "type": "image/jpg"
+    }
+  ]
+}
