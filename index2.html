@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Prometric Nursing Test Hub">
+<meta property="og:description" content="Access all Nursing Prometric Test Modules on one platform">
+<meta property="og:image" content="https://github.com/gyoutrain-lab/prometric-nursing-test/blob/main/icon17%20(1).jpg?raw=true">
+<meta name="theme-color" content="#b30000">
+<title>Prometric Nursing Test Hub</title>
+<style>
+body {margin:0;font-family:"Poppins",sans-serif;background:#f8f8f8;color:#222;}
+header{background:#b30000;color:white;padding:1rem;text-align:center;font-size:1.4rem;font-weight:600;}
+#splash{position:fixed;top:0;left:0;width:100%;height:100%;background:#b30000 url('https://github.com/gyoutrain-lab/prometric-nursing-test/blob/main/icon17%20(1).jpg?raw=true') center/contain no-repeat;display:flex;justify-content:center;align-items:flex-end;color:gold;font-size:1.6rem;font-weight:bold;text-shadow:2px 2px 4px rgba(0,0,0,0.7);z-index:1000;} 
+.container{max-width:800px;margin:20px auto;padding:20px;background:white;border-radius:12px;box-shadow:0 2px 6px rgba(0,0,0,0.15);}
+.test-title{text-align:center;font-size:1.3rem;font-weight:600;margin-bottom:1rem;}
+button{background:#b30000;color:white;border:none;padding:12px 20px;border-radius:8px;font-size:1rem;cursor:pointer;transition:.3s;margin-top:10px;width:100%;}
+button:hover{background:#8c0000;}
+.timer{text-align:right;font-size:1rem;color:#b30000;font-weight:bold;margin-bottom:10px;}
+.question{font-weight:600;margin-bottom:8px;}
+.options label{display:block;margin-bottom:8px;}
+.navigation{display:flex;justify-content:space-between;margin-top:20px;}
+footer{text-align:center;margin:25px 0;}
+footer img{width:35px;height:35px;margin:0 10px;}
+@media(max-width:768px){header{font-size:1.1rem;padding:.8rem;} .container{width:92%;padding:15px;} button{font-size:.95rem;padding:10px;} .timer{font-size:.9rem;}}
+</style>
+</head>
+<body>
+<header>🩺 Prometric Nursing Test Hub</header>
+
+<div id="splash">Nursing Excellence Begins Here 💧</div>
+
+<div class="container" id="intro">
+<div class="test-title">Select a Test Module</div>
+<button onclick="selectModule('fundamental')">Fundamental Nursing</button>
+<button onclick="selectModule('pediatric')">Pediatric Nursing</button>
+<button onclick="selectModule('pharmacology')">Pharmacology</button>
+<button onclick="selectModule('behavioral')">Behavioral/Ethics</button>
+<button onclick="selectModule('criticalcare')">Critical Care</button>
+<button onclick="selectModule('maternity')">Maternity/Obstetric</button>
+<button onclick="selectModule('medicalsurgical')">Medical-Surgical</button>
+</div>
+
+<div class="container" id="test-area" style="display:none;">
+<div class="timer" id="timer">Time Left: 15:00</div>
+<div id="question-container"></div>
+<div class="navigation">
+<button id="prevBtn" onclick="prevQuestion()">⟵ Previous</button>
+<button id="nextBtn" onclick="nextQuestion()">Next ⟶</button>
+</div>
+</div>
+
+<div class="container" id="result-area" style="display:none;">
+<h2>Test Completed ✅</h2>
+<p id="score"></p>
+<button onclick="location.reload()">Restart Test</button>
+</div>
+
+<footer>
+<div class="social-icons">
+<a href="https://wa.me/6281901685253" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+<a href="https://web.facebook.com/gyouskill/?_rdc=1&_rdr#" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+</a>
+</div>
+<p style="font-size:.9rem;color:#555;">© 2025 Prometric Nursing Training Platform</p>
+</footer>
+
+<script>
+const modules = {
+fundamental:[{q:"Fundamental Q1: Sample question?",options:["A","B","C","D"],answer:0},{q:"Fundamental Q2?",options:["A","B","C","D"],answer:1}],
+pediatric:[{q:"Pediatric Q1: Sample question?",options:["A","B","C","D"],answer:0}],
+pharmacology:[{q:"Pharmacology Q1?",options:["A","B","C","D"],answer:2}],
+behavioral:[{q:"Behavioral Q1?",options:["A","B","C","D"],answer:1}],
+criticalcare:[{q:"Critical Care Q1?",options:["A","B","C","D"],answer:3}],
+maternity:[{q:"Maternity Q1?",options:["A","B","C","D"],answer:1}],
+medicalsurgical:[{q:"Med-Surgical Q1?",options:["A","B","C","D"],answer:0}],
+};
+
+let currentModule=[],currentQuestion=0,score=0,timeLeft=15*60;
+
+function hideSplash(){document.getElementById('splash').style.display='none';}
+setTimeout(hideSplash,2000); // 2 seconds splash
+
+function selectModule(mod){
+currentModule=shuffle([...modules[mod]]);
+currentQuestion=0;score=0;
+document.getElementById('intro').style.display='none';
+document.getElementById('test-area').style.display='block';
+showQuestion();
+startTimer();
+}
+
+function shuffle(a){return a.sort(()=>Math.random()-0.5);}
+
+function showQuestion(){
+const q=currentModule[currentQuestion];
+const container=document.getElementById("question-container");
+container.innerHTML=`<div class="question">Q${currentQuestion+1}. ${q.q}</div>
+<div class="options">
+${q.options.map((opt,i)=>`<label><input type='radio' name='q${currentQuestion}' value='${i}'> ${opt}</label>`).join('')}
+</div>`;
+}
+
+function nextQuestion(){
+const selected=document.querySelector(`input[name='q${currentQuestion}']:checked`);
+if(selected && parseInt(selected.value)===currentModule[currentQuestion].answer) score++;
+if(currentQuestion<currentModule.length-1){currentQuestion++;showQuestion();}else finishTest();
+}
+
+function prevQuestion(){
+if(currentQuestion>0){currentQuestion--;showQuestion();}
+}
+
+function startTimer(){
+const timerElement=document.getElementById("timer");
+const timer=setInterval(()=>{
+let min=Math.floor(timeLeft/60);let sec=timeLeft%60;
+timerElement.textContent=`Time Left: ${min}:${sec<10?'0'+sec:sec}`;
+timeLeft--;
+if(timeLeft<0){clearInterval(timer);finishTest();}
+},1000);
+}
+
+function finishTest(){
+document.getElementById('test-area').style.display='none';
+document.getElementById('result-area').style.display='block';
+document.getElementById('score').textContent=`You scored ${score} out of ${currentModule.length}`;
+}
+</script>
+</body>
+</html>
