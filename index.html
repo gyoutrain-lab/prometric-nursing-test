@@ -1,54 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nursing Prometric Test Choices</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nursing Prometric Test Dashboard</title>
 
   <!-- 🧠 Social Media Preview -->
-  <meta property="og:title" content="Nursing Prometric Simulation Tests" />
-  <meta property="og:description" content="Choose from multiple nursing Prometric test simulations — Pediatric, Pharmacology, Behavioral, Critical Care, Maternity, and more." />
+  <meta property="og:title" content="Nursing Prometric Simulation Dashboard" />
+  <meta property="og:description" content="Access all Nursing Prometric Simulation Tests — Pediatric, Pharmacology, Behavioral, Critical Care, Maternity, and more." />
   <meta property="og:image" content="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gyoutrain-lab.github.io/nursing-prometric-test-choices/" />
+  <meta property="og:url" content="https://gyoutrain-lab.github.io/nursing-prometric-test-dashboard/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" />
 
   <style>
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
       background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
       margin: 0;
       padding: 0;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
     }
-    .container {
-      max-width: 520px;
+
+    .card {
       background: white;
-      border-radius: 18px;
+      border-radius: 20px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
       padding: 30px;
+      width: 90%;
+      max-width: 480px;
       text-align: center;
     }
-    .container img {
+
+    img {
       width: 110px;
       border-radius: 50%;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       margin-bottom: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
+
     h1 {
-      font-size: 1.5em;
       color: #1e293b;
-      margin-bottom: 5px;
+      font-size: 1.4em;
+      margin-bottom: 10px;
     }
+
     p {
       color: #475569;
-      margin-bottom: 25px;
       font-size: 0.95em;
+      margin-bottom: 25px;
     }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      margin-bottom: 20px;
+    }
+
     button {
       width: 100%;
       background-color: #1d4ed8;
@@ -61,44 +76,167 @@
       cursor: pointer;
       transition: 0.2s;
     }
+
     button:hover {
       background-color: #2563eb;
       transform: translateY(-2px);
     }
+
     .logout {
       background-color: #dc2626;
     }
+
     .logout:hover {
       background-color: #b91c1c;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .social, .share {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .social a img, .share a img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .social a img:hover, .share a img:hover {
+      transform: scale(1.1);
+    }
+
+    .note {
+      font-size: 0.85em;
+      color: #64748b;
+      margin-top: 8px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e8f0;
+      margin: 25px 0;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <img src="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" alt="Nursing Prometric Icon">
-    <h1>🧠 Nursing Prometric Simulation Tests</h1>
+  <!-- ✅ LOGIN PAGE -->
+  <div id="login-card" class="card">
+    <img src="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" alt="Nursing Prometric Icon" />
+    <h1>🧠 Nursing Prometric Login</h1>
+    <p>Enter your name to access the test dashboard</p>
+    <input type="text" id="candidateName" placeholder="Your full name" />
+    <button onclick="login()">Login</button>
+
+    <hr>
+    <!-- ✅ Share on Login -->
+    <h3 style="color:#1e3a8a; font-size:1em;">📢 Share this Dashboard</h3>
+    <div class="share">
+      <a id="shareWaLogin" href="#" target="_blank" title="Share on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Share on WhatsApp">
+      </a>
+      <a id="shareFbLogin" href="#" target="_blank" title="Share on Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Share on Facebook">
+      </a>
+    </div>
+
+    <div class="social">
+      <a href="https://wa.me/6281901685253" target="_blank" title="Contact via WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+      </a>
+      <a href="https://web.facebook.com/gyouskill/?_rdc=1&_rdr#" target="_blank" title="Visit our Facebook page">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+      </a>
+    </div>
+
+    <p class="note">Need help? Contact us on WhatsApp or visit our Facebook page.</p>
+  </div>
+
+  <!-- ✅ DASHBOARD PAGE -->
+  <div id="dashboard-card" class="card hidden">
+    <img src="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" alt="Dashboard Icon" />
+    <h1>Welcome, <span id="displayName"></span> 👋</h1>
     <p>Select your test category below:</p>
 
+    <!-- ✅ Test Buttons -->
     <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-pediatric/')">Pediatric Nursing</button>
     <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-pharmacology/')">Pharmacology</button>
     <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-eticabehabior/')">Behavioral / Ethics</button>
     <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-criticalcare2/')">Critical Care</button>
     <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-maternityobstetric/')">Maternity & Obstetric</button>
     <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test/')">Fundamental Nursing</button>
-    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-medicalsurgical/')">Medical Surgical</button>
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-medical-surgical/')">Medical Surgical</button>
 
     <br>
     <button class="logout" onclick="logout()">Logout</button>
+
+    <!-- ✅ Contact Links -->
+    <div class="social">
+      <a href="https://wa.me/6281901685253" target="_blank" title="Contact via WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+      </a>
+      <a href="https://web.facebook.com/gyouskill/?_rdc=1&_rdr#" target="_blank" title="Visit our Facebook page">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook">
+      </a>
+    </div>
+
+    <hr>
+
+    <!-- ✅ Share Links -->
+    <h3 style="color:#1e3a8a; font-size:1em;">📢 Share this Dashboard</h3>
+    <div class="share">
+      <a id="shareWa" href="#" target="_blank" title="Share on WhatsApp">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Share on WhatsApp">
+      </a>
+      <a id="shareFb" href="#" target="_blank" title="Share on Facebook">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Share on Facebook">
+      </a>
+    </div>
+
+    <p class="note">Need help? Contact us on WhatsApp or visit our Facebook page.</p>
   </div>
 
   <script>
+    const pageUrl = "https://gyoutrain-lab.github.io/nursing-prometric-test-dashboard/";
+
+    // ✅ Pre-set share links for login page
+    document.getElementById('shareWaLogin').href = `https://wa.me/?text=Try%20this%20Nursing%20Prometric%20Simulation%20Dashboard%20👉%20${pageUrl}`;
+    document.getElementById('shareFbLogin').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+
+    // ✅ LOGIN FUNCTION
+    function login() {
+      const name = document.getElementById('candidateName').value.trim();
+      if (!name) {
+        alert("Please enter your name to continue.");
+        return;
+      }
+      document.getElementById('displayName').textContent = name;
+      document.getElementById('login-card').classList.add('hidden');
+      document.getElementById('dashboard-card').classList.remove('hidden');
+
+      // update share links dynamically
+      document.getElementById('shareWa').href = `https://wa.me/?text=Join%20me%20(${name})%20on%20the%20Nursing%20Prometric%20Simulation%20Dashboard%20👉%20${pageUrl}`;
+      document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+    }
+
+    // ✅ TEST LAUNCH FUNCTION
     function openTest(url) {
       window.open(url, '_blank');
     }
+
+    // ✅ LOGOUT FUNCTION
     function logout() {
       if (!confirm("Are you sure you want to logout?")) return;
-      window.location.href = "https://mail.google.com/";
+      document.getElementById('dashboard-card').classList.add('hidden');
+      document.getElementById('login-card').classList.remove('hidden');
+      document.getElementById('candidateName').value = '';
     }
   </script>
 </body>
