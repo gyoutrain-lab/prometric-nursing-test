@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nursing Prometric Test Choices</title>
+
+  <!-- 🧠 Social Media Preview -->
+  <meta property="og:title" content="Nursing Prometric Simulation Tests" />
+  <meta property="og:description" content="Choose from multiple nursing Prometric test simulations — Pediatric, Pharmacology, Behavioral, Critical Care, Maternity, and more." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gyoutrain-lab.github.io/nursing-prometric-test-choices/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 520px;
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      padding: 30px;
+      text-align: center;
+    }
+    .container img {
+      width: 110px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      margin-bottom: 15px;
+    }
+    h1 {
+      font-size: 1.5em;
+      color: #1e293b;
+      margin-bottom: 5px;
+    }
+    p {
+      color: #475569;
+      margin-bottom: 25px;
+      font-size: 0.95em;
+    }
+    button {
+      width: 100%;
+      background-color: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    .logout {
+      background-color: #dc2626;
+    }
+    .logout:hover {
+      background-color: #b91c1c;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="https://raw.githubusercontent.com/gyoutrain-lab/prometric-nursing-test-choices/main/icon17%20(9).jpg" alt="Nursing Prometric Icon">
+    <h1>🧠 Nursing Prometric Simulation Tests</h1>
+    <p>Select your test category below:</p>
+
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-pediatric/')">Pediatric Nursing</button>
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-pharmacology/')">Pharmacology</button>
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-eticabehabior/')">Behavioral / Ethics</button>
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-criticalcare2/')">Critical Care</button>
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-maternityobstetric/')">Maternity & Obstetric</button>
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test/')">Fundamental Nursing</button>
+    <button onclick="openTest('https://gyoutrain-lab.github.io/nursing-prometric-test-medicalsurgical/')">Medical Surgical</button>
+
+    <br>
+    <button class="logout" onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    function openTest(url) {
+      window.open(url, '_blank');
+    }
+    function logout() {
+      if (!confirm("Are you sure you want to logout?")) return;
+      window.location.href = "https://mail.google.com/";
+    }
+  </script>
+</body>
+</html>
